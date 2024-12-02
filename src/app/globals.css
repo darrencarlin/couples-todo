@@ -1,21 +1,248 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@plugin '@tailwindcss/typography';
+@plugin 'tailwindcss-animate';
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@variant dark (&:is(.dark *));
+
+@theme {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-picton-100: var(--picton-100);
+  --color-picton-200: var(--picton-200);
+  --color-picton-300: var(--picton-300);
+  --color-picton-400: var(--picton-400);
+  --color-picton-500: var(--picton-500);
+  --color-picton-600: var(--picton-600);
+  --color-picton-700: var(--picton-700);
+  --color-picton-800: var(--picton-800);
+  --color-picton-900: var(--picton-900);
+
+  --color-confetti-100: var(--confetti-100);
+  --color-confetti-200: var(--confetti-200);
+  --color-confetti-300: var(--confetti-300);
+  --color-confetti-400: var(--confetti-400);
+  --color-confetti-500: var(--confetti-500);
+  --color-confetti-600: var(--confetti-600);
+  --color-confetti-700: var(--confetti-700);
+  --color-confetti-800: var(--confetti-800);
+  --color-confetti-900: var(--confetti-900);
+
+  --color-porsche-100: var(--porsche-100);
+  --color-porsche-200: var(--porsche-200);
+  --color-porsche-300: var(--porsche-300);
+  --color-porsche-400: var(--porsche-400);
+  --color-porsche-500: var(--porsche-500);
+  --color-porsche-600: var(--porsche-600);
+  --color-porsche-700: var(--porsche-700);
+  --color-porsche-800: var(--porsche-800);
+  --color-porsche-900: var(--porsche-900);
+
+  --color-blush-100: var(--blush-100);
+  --color-blush-200: var(--blush-200);
+  --color-blush-300: var(--blush-300);
+  --color-blush-400: var(--blush-400);
+  --color-blush-500: var(--blush-500);
+  --color-blush-600: var(--blush-600);
+  --color-blush-700: var(--blush-700);
+  --color-blush-800: var(--blush-800);
+  --color-blush-900: var(--blush-900);
+
+  --color-fountain-100: var(--fountain-100);
+  --color-fountain-200: var(--fountain-200);
+  --color-fountain-300: var(--fountain-300);
+  --color-fountain-400: var(--fountain-400);
+  --color-fountain-500: var(--fountain-500);
+  --color-fountain-600: var(--fountain-600);
+  --color-fountain-700: var(--fountain-700);
+  --color-fountain-800: var(--fountain-800);
+  --color-fountain-900: var(--fountain-900);
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.5rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+
+    /* Custom Colors */
+    --picton-900: #004b8f;
+    --picton-800: #005fa3;
+    --picton-700: #0c7bbf;
+    --picton-600: #2e9ae0;
+    --picton-500: #50aeeb;
+    --picton-400: #6cc0f4;
+    --picton-300: #8fd0f9;
+    --picton-200: #b2e0fe;
+    --picton-100: #d5f0ff;
+
+    --confetti-900: #e0b24d;
+    --confetti-800: #e3b960;
+    --confetti-700: #e6c673;
+    --confetti-600: #e9cd86;
+    --confetti-500: #edce68;
+    --confetti-400: #f0d57b;
+    --confetti-300: #f3dc8e;
+    --confetti-200: #f6e3a1;
+    --confetti-100: #f9eab4;
+
+    --porsche-900: #e0b24d;
+    --porsche-800: #e3b960;
+    --porsche-700: #e6c673;
+    --porsche-600: #e9cd86;
+    --porsche-500: #edad68;
+    --porsche-400: #f0d57b;
+    --porsche-300: #f3dc8e;
+    --porsche-200: #f6e3a1;
+    --porsche-100: #f9eab4;
+
+    --blush-900: #e14d6d;
+    --blush-800: #e35b79;
+    --blush-700: #e46985;
+    --blush-600: #e67791;
+    --blush-500: #e1718b;
+    --blush-400: #e37f97;
+    --blush-300: #e58da3;
+    --blush-200: #e79bb0;
+    --blush-100: #e9a9bc;
+
+    --fountain-900: #4cb9ba;
+    --fountain-800: #5ac4c5;
+    --fountain-700: #68cfd0;
+    --fountain-600: #76dada;
+    --fountain-500: #5cc6c7;
+    --fountain-400: #6cd1d2;
+    --fountain-300: #7cdcdc;
+    --fountain-200: #8ce7e7;
+    --fountain-100: #9cf2f2;
+
+    --emerald-500: #10b981;
+    --indigo-500: #6366f1;
+    --plum-500: #9333ea;
+    --crimson-500: #ef4444;
+    --teal-500: #14b8a6;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
 }
