@@ -14,7 +14,7 @@ export const POST = async (request: Request) => {
   }
 
   try {
-    const data = await prisma?.planCategory.create({
+    const data = await prisma.planCategory.create({
       data: {
         name: body.category,
         userId: session.user.id,

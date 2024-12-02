@@ -1,5 +1,6 @@
 import { Main } from "@/components/main";
 import { auth } from "@/lib/auth";
+import prisma from "@/lib/db";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
@@ -10,7 +11,7 @@ const getPlan = async (planId: string) => {
     return redirect("/sign-in");
   }
 
-  const data = await prisma?.plan.findFirst({
+  const data = await prisma.plan.findFirst({
     where: {
       userId: session.user.id,
       id: planId,

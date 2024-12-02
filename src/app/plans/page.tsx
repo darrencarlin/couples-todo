@@ -1,5 +1,4 @@
 import { Icon } from "@/components/icon";
-import { Main } from "@/components/main";
 import {
   Accordion,
   AccordionContent,
@@ -7,7 +6,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { auth } from "@/lib/auth";
-import { cn, darkenHex, lightenHex } from "@/lib/utils";
+import prisma from "@/lib/db";
+import { cn } from "@/lib/utils";
 import { PlanWithRelations } from "@/types";
 import { format } from "date-fns";
 import Link from "next/link";
@@ -20,7 +20,7 @@ const getPlans = async () => {
     return redirect("/sign-in");
   }
 
-  const data = await prisma?.plan.findMany({
+  const data = await prisma.plan.findMany({
     where: {
       userId: session.user.id,
     },

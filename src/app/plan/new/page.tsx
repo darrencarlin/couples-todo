@@ -1,6 +1,7 @@
 import { NewPlanForm } from "@/components/forms/new-plan-form";
 import { Main } from "@/components/main";
 import { auth } from "@/lib/auth";
+import prisma from "@/lib/db";
 import { redirect } from "next/navigation";
 
 const getPlanCategories = async () => {
@@ -10,7 +11,7 @@ const getPlanCategories = async () => {
     return redirect("/sign-in");
   }
 
-  const data = await prisma?.planCategory.findMany({
+  const data = await prisma.planCategory.findMany({
     where: {
       userId: session.user.id,
     },

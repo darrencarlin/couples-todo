@@ -11,7 +11,7 @@ export const GET = async (request: NextRequest, response: NextResponse) => {
   }
 
   try {
-    const data = await prisma?.plan.findMany({
+    const data = await prisma.plan.findMany({
       where: {
         userId: session.user.id,
       },
@@ -33,7 +33,7 @@ export const POST = async (request: Request) => {
   }
 
   try {
-    const data = await prisma?.plan.create({
+    const data = await prisma.plan.create({
       data: {
         ...body,
         metadata: JSON.stringify(body.metadata),
