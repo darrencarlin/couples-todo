@@ -7,18 +7,19 @@ export const Navigation = async () => {
   const session = await auth();
   return (
     <nav className="flex justify-between items-center px-3 py-3 bg-zinc-200">
-      <div className="flex gap-1">
-        <Link href="/plans" className="text-xs underline">
+      <div className="flex gap-2">
+        <Link href="/plans" className="font-medium underline">
           Plans
         </Link>
-        <Link href="/todos" className="text-xs underline">
-          Todos
+
+        <Link href="/plan/new" className="font-medium underline">
+          New Plan
         </Link>
       </div>
       <div>
         {!session && (
-          <Link href="/sign-in">
-            <LogIn className="w-5 h-5" />
+          <Link href="/sign-in" className="font-medium underline">
+            Log In
           </Link>
         )}
         {session && <Logout />}

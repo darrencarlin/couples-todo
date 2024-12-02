@@ -6,9 +6,13 @@ export default async function Home() {
 
   return (
     <Main>
-      <pre>
-        <code>{JSON.stringify(session, null, 2)}</code>
-      </pre>
+      {session ? (
+        <pre>
+          <code>{JSON.stringify(session, null, 2)}</code>
+        </pre>
+      ) : (
+        <div>Not logged in</div>
+      )}
     </Main>
   );
 }

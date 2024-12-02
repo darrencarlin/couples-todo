@@ -12,8 +12,8 @@ export const Logout = () => {
         redirect("/");
       }}
     >
-      <button type="submit">
-        <LogOut className="w-5 h-5" />
+      <button type="submit" className="font-medium underline">
+        Log Out
       </button>
     </form>
   );
