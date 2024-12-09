@@ -1,4 +1,4 @@
-import NextAuth, {type DefaultSession} from "next-auth";
+import NextAuth, { type DefaultSession } from "next-auth";
 
 declare module "next-auth" {
   /**
@@ -11,6 +11,7 @@ declare module "next-auth" {
       stripeCustomerId: string;
       stripeSubscriptionId: string;
       subscriptionStatus: string;
+      significantOtherId: string;
       plan: string;
       createdAt: string;
       updatedAt: string;

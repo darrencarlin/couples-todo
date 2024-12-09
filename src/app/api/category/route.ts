@@ -20,6 +20,7 @@ export const POST = async (request: Request) => {
         userId: session.user.id,
         icon: body.icon,
         color: body.color,
+        significantOtherId: session.user.significantOtherId ?? "",
       },
     });
 

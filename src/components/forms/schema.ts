@@ -1,5 +1,32 @@
 import { z } from "zod";
 
+export const SignificantOtherSchema = z.object({
+  id: z.string().optional(),
+  name: z.string().min(1, { message: "Name is required" }),
+  email: z.string().email(),
+  createdAt: z.date().optional(),
+  updatedAt: z.date().optional(),
+});
+
+export const CreateSignificantOtherSchema = SignificantOtherSchema.omit({
+  id: true,
+  name: true,
+  createdAt: true,
+  updatedAt: true,
+});
+
+export const UpdateSignificantOtherSchema = SignificantOtherSchema.extend({
+  id: z.string().min(1, { message: "ID is required for update" }),
+});
+
+export type SignificantOtherFormData = z.infer<
+  typeof CreateSignificantOtherSchema
+>;
+
+export type SignificantOtherUpdateData = z.infer<
+  typeof UpdateSignificantOtherSchema
+>;
+
 // Base Zod schema for Plan
 export const PlanSchema = z.object({
   id: z.string().optional(), // Optional for create, required for update

@@ -1,7 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { format, set } from "date-fns";
+import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
@@ -20,7 +20,6 @@ import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 
 import { capitalize, cn, formatDate, pluralize } from "@/lib/utils";
 import { Todo } from "@prisma/client";
-import { revalidatePath } from "next/cache";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Heading } from "./heading";

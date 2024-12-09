@@ -7,6 +7,7 @@ import {
   NotebookPen,
   StickyNote,
   Tv,
+  Users,
   Volleyball,
 } from "lucide-react";
 
@@ -19,6 +20,7 @@ export const ICONS = [
   "NotebookPen",
   "Tv",
   "Clapperboard",
+  "Users",
 ];
 
 interface Props {
@@ -45,6 +47,8 @@ export const Icon = ({ icon, color = "#ffffff", size = 16 }: Props) => {
       return <Tv size={size} color={color} strokeWidth={1} />;
     case "Clapperboard":
       return <Clapperboard size={size} color={color} strokeWidth={1} />;
+    case "Users":
+      return <Users size={size} color={color} strokeWidth={1} />;
     default:
       return <CalendarDays size={size} color={color} strokeWidth={1} />;
   }

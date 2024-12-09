@@ -22,7 +22,14 @@ export const Navigation = async () => {
             Log In
           </Link>
         )}
-        {session && <Logout />}
+        {session && (
+          <div className="flex gap-2">
+            <Link href="/profile" className="font-medium underline">
+              Profile
+            </Link>
+            <Logout />
+          </div>
+        )}
       </div>
     </nav>
   );

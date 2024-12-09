@@ -1,6 +1,24 @@
 import { BASE_URL } from "@/constants";
 import { clsx, type ClassValue } from "clsx";
+import { addDays, isAfter, isBefore, isSameDay, isToday } from "date-fns";
 import { twMerge } from "tailwind-merge";
+
+export const isDateToday = (planDate: Date, currentDate: Date = new Date()) =>
+  isToday(planDate);
+
+export const isDatePast = (planDate: Date, currentDate: Date = new Date()) =>
+  isBefore(planDate, currentDate) && !isSameDay(planDate, currentDate);
+
+export const isDateWithinWeek = (
+  planDate: Date,
+  currentDate: Date = new Date()
+) => {
+  const oneWeekLater = addDays(currentDate, 7);
+  return isAfter(planDate, currentDate) && !isAfter(planDate, oneWeekLater);
+};
+
+export const isDateFuture = (planDate: Date, currentDate: Date = new Date()) =>
+  isAfter(planDate, currentDate);
 
 export const formatDate = (date: Date) => {
   return new Date(date).toISOString().split("T")[0];

@@ -27,6 +27,8 @@ model User {
 
   planCategories PlanCategory[]
   todoCategories TodoCategory[]
+
+  significantOtherId String? @default("")
 }
 
 model Account {
@@ -34,13 +36,13 @@ model Account {
   type              String
   provider          String
   providerAccountId String
-  refreshToken      String?
-  accessToken       String?
-  expiresAt         Int?
-  tokenType         String?
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
   scope             String?
-  idToken           String?
-  sessionState      String?
+  id_token          String?
+  session_state     String?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -61,6 +63,15 @@ model Session {
 }
 
 model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@id([identifier, token])
+}
+
+model InviteToken {
+  invitee    String
   identifier String
   token      String
   expires    DateTime
@@ -101,7 +112,9 @@ model Todo {
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
 
-  @@index([userId])
+  significantOtherId String? @default("")
+
+  @@index([userId, significantOtherId])
 }
 
 model Plan {
@@ -121,7 +134,9 @@ model Plan {
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
 
-  @@index([userId])
+  significantOtherId String? @default("")
+
+  @@index([userId, significantOtherId])
 }
 
 model PlanCategory {
@@ -136,6 +151,8 @@ model PlanCategory {
   plans  Plan[]
   user   User   @relation(fields: [userId], references: [id])
   userId String
+
+  significantOtherId String? @default("")
 
   @@index([name, id])
 }

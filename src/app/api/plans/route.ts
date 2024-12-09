@@ -37,6 +37,7 @@ export const POST = async (request: Request) => {
       data: {
         ...body,
         metadata: JSON.stringify(body.metadata),
+        significantOtherId: session.user.significantOtherId ?? "",
         userId: session.user.id,
       },
     });

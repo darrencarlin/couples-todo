@@ -15,7 +15,7 @@ export default async function VerifyPage({
 }) {
   // Verify the token
   const { success, message } = await fetchApi<ResponseType>(
-    "/api/verify/token/" + params.token
+    "/api/verify/user/" + params.token
   );
 
   return (

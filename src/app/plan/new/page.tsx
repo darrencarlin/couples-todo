@@ -13,7 +13,10 @@ const getPlanCategories = async () => {
 
   const data = await prisma.planCategory.findMany({
     where: {
-      userId: session.user.id,
+      OR: [
+        { userId: session.user.id },
+        { userId: session.user.significantOtherId },
+      ],
     },
     select: {
       id: true,

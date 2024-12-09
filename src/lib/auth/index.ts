@@ -1,3 +1,4 @@
+import { APP_NAME } from "@/constants";
 import { VerificationEmail } from "@/emails/verification";
 import prisma from "@/lib/db";
 
@@ -51,7 +52,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
       // Send verification email
       const { error: emailError } = await resend.emails.send({
-        from: `Next Starter <${process.env.RESEND_EMAIL_ADDRESS}>`,
+        from: `${APP_NAME} <${process.env.RESEND_EMAIL_ADDRESS}>`,
         to: user.email,
         subject: "Verify your email address",
         react: VerificationEmail({ token: token }),
