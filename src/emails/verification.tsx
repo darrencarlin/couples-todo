@@ -1,9 +1,10 @@
-import {Button} from "@react-email/button";
-import {Font} from "@react-email/font";
-import {Head} from "@react-email/head";
-import {Heading} from "@react-email/heading";
-import {Html} from "@react-email/html";
-import {Text} from "@react-email/text";
+import { BASE_URL } from "@/constants";
+import { Button } from "@react-email/button";
+import { Font } from "@react-email/font";
+import { Head } from "@react-email/head";
+import { Heading } from "@react-email/heading";
+import { Html } from "@react-email/html";
+import { Text } from "@react-email/text";
 
 import * as React from "react";
 
@@ -11,7 +12,7 @@ interface Props {
   token: string;
 }
 
-export const VerificationEmail = async ({token}: Props) => {
+export const VerificationEmail = async ({ token }: Props) => {
   return (
     <Html>
       <Head>
@@ -31,15 +32,7 @@ export const VerificationEmail = async ({token}: Props) => {
         Click the link below to verify your email address and start using our
         service.
       </Text>
-      <Button
-        href={
-          process.env.NODE_ENV === "development"
-            ? `http://localhost:3000/verify/${token}`
-            : `${process.env.BASE_URL}/verify/${token}`
-        }
-      >
-        Verify Email
-      </Button>
+      <Button href={`${BASE_URL}/verify/${token}`}>Verify Email</Button>
     </Html>
   );
 };

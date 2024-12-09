@@ -1,3 +1,4 @@
+import { BASE_URL } from "@/constants";
 import { Button } from "@react-email/button";
 import { Font } from "@react-email/font";
 import { Head } from "@react-email/head";
@@ -32,13 +33,7 @@ export const SignificantOtherEmail = async ({ name, token }: Props) => {
         Click the link below to accept the invitation and start using our
         service.
       </Text>
-      <Button
-        href={
-          process.env.NODE_ENV === "development"
-            ? `http://localhost:3000/invite/onboarding/${token}`
-            : `${process.env.BASE_URL}/invite/onboarding/${token}`
-        }
-      >
+      <Button href={`${BASE_URL}/invite/onboarding/${token}`}>
         Accept Invitation
       </Button>
     </Html>
